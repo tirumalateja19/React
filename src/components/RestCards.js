@@ -2,11 +2,11 @@ import { CLOUD_URL } from "../utils/constants";
 
 const RestCards = (props) => {
   const { resData } = props;
-  const { name, cuisines, avgRating, cloudinaryImageId } = resData?.data;
+  const { name, cuisines, avgRating, cloudinaryImageId } = resData?.info;
   return (
     <div id="card-res">
       <img src={CLOUD_URL + cloudinaryImageId} id="image" alt="logo"></img>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       <br></br>
       <h4>{cuisines.join(", ")}</h4>
       <br></br>

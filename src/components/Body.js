@@ -5,12 +5,28 @@ import Shimmer from "./shimmer";
 import "/index.css";
 
 const Body = () => {
-  const [listOfRestaurants, SetListOfRestaurants] = useState(resList);
-  const [filteredRestaurantsData, setFilteredRestaurantsData] =
-    useState(resList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurantsData, setFilteredRestaurantsData] = useState([]);
 
   const [searchText, SetSearxhText] = useState("");
   console.log("Body Rendered");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4989841&lng=78.4176358&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    setListOfRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurantsData(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -31,7 +47,7 @@ const Body = () => {
             onClick={() => {
               console.log(searchText);
               const filteredRestaurants = listOfRestaurants.filter((item) =>
-                item.data.name.toLowerCase().includes(searchText.toLowerCase())
+                item.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestaurantsData(filteredRestaurants);
             }}
@@ -53,7 +69,7 @@ const Body = () => {
       </div>
       <div id="res-cards">
         {filteredRestaurantsData.map((restaurant) => (
-          <RestCards key={restaurant?.data?.id} resData={restaurant} />
+          <RestCards key={restaurant?.info?.id} resData={restaurant} />
         ))}
       </div>
     </div>
