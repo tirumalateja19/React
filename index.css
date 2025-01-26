@@ -45,7 +45,7 @@ body {
     padding: 0;
 }
 
-#nav ul li a {
+#nav ul li #a {
     text-decoration: none;
     color: #000;
     font-weight: 600;
@@ -152,4 +152,43 @@ body {
     margin-right: 5px;
     font-weight: 600;
     font-size: 18px;
+}
+
+#menu-container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+#resta-name {
+    height: 200px;
+    width: 50%;
+    border-radius: 15px;
+    background-color: aliceblue;
+    align-items: center;
+    padding: 15px;
+}
+
+#resta-name h1 {
+    text-align: center;
+}
+
+#contents {
+    height: 70%;
+    width: 100%;
+    /* background-color: #dcd3d3; */
+    border-radius: 10px;
+
+}
+
+#menu-list {
+    height: 100%;
+    width: 50%;
+    /* background-color: grey; */
+
 }
