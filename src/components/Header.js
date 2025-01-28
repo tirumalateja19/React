@@ -5,9 +5,9 @@ import "/index.css";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
-  console.log("header rendered");
+  // console.log("header rendered");
   useEffect(() => {
-    console.log("useEffect called!");
+    // console.log("useEffect called!");
   }, []);
 
   return (

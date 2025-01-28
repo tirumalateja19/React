@@ -2,36 +2,36 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
-    console.log("Child Constructor");
     super(props);
     this.state = {
-      count: 1,
-      count2: 3,
+      userInfo: {
+        name: "Dummy",
+        login: "Dummy",
+      },
     };
+    // console.log(this.state.userInfo.name + "Constructor");
   }
-  componentDidMount() {
-    console.log("Child Mount");
+  async componentDidMount() {
+    // console.log(this.state.userInfo.name + "Mount");
+
+    const data = await fetch(" https://api.github.com/users/tirumalateja19");
+    const json = await data.json();
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
+  componentWillUnmount() {
+    // console.log("Component will Unmount");
   }
   render() {
-    console.log("Child Render");
-    const { name, contact } = this.props;
-    const { count, count2 } = this.state;
+    const { name, login } = this.state.userInfo;
+    // console.log(this.state.userInfo.name + " Render");
+    // debugger;
     return (
       <div id="UserDetails">
-        <h1>Count:{count}</h1>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Count inc
-        </button>
         <h2>Name:{name}</h2>
-        <h3>Location:Hyderbad</h3>
-
-        <h3>Contact:{contact}</h3>
+        <h3>Login:{login}</h3>
       </div>
     );
   }
