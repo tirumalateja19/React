@@ -31,19 +31,19 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div id="restuarent">
-      <div id="filter">
-        <div id="search">
+    <div className="restuarent">
+      <div className="flex" items-center>
+        <div className="flex  m-4 p-4">
           <input
             type="text"
-            id="search-bar"
+            className=" border border-solid border-black shadow-lg"
             value={searchText}
             onChange={(e) => {
               SetSearxhText(e.target.value);
             }}
           />
           <button
-            id="search-btn"
+            className="bg-green-300 px-3 ml-5 rounded-sm shadow"
             onClick={() => {
               console.log(searchText);
               const filteredRestaurants = listOfRestaurants.filter((item) =>
@@ -55,19 +55,21 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRestaurants.filter(
-              (restaurant) => restaurant.info.avgRating > 4
-            );
-            setFilteredRestaurantsData(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="flex  m-4 p-4">
+          <button
+            className="bg-amber-300 px-3.5 shadow"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (restaurant) => restaurant.info.avgRating > 4
+              );
+              setFilteredRestaurantsData(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
-      <div id="res-cards">
+      <div className="flex flex-wrap">
         {filteredRestaurantsData.map((restaurant) => (
           <Link
             id="a"

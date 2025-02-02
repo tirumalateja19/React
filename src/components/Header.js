@@ -13,42 +13,42 @@ const Header = () => {
   }, []);
 
   return (
-    <div id="header">
-      <div id="food-app-nav">
-        <div id="logo">
-          <img src={LOGO_URL}></img>
+    <div className="header">
+      <div className="flex bg-pink-100 shadow-lg justify-between mb-2">
+        <div className="logo-container">
+          <img className="w-30" src={LOGO_URL}></img>
         </div>
-        <div id="nav">
-          <ul>
-            <li>
+        <div className="flex items-center">
+          <ul className="flex p-2 m-4">
+            <li className="px-4">
               <h2>Online Status:{isOnline ? " 🟢" : " 🔴"}</h2>
             </li>
-            <li>
-              <Link id="a" to="/">
+            <li className="px-4">
+              <Link className="a" to="/">
                 Home
               </Link>
             </li>
-            <li>
-              <Link id="a" to="/about">
+            <li className="px-4">
+              <Link className="a" to="/about">
                 About Us
               </Link>
             </li>
-            <li>
-              <Link id="a" to="/contact">
+            <li className="px-4">
+              <Link className="a" to="/contact">
                 Contact
               </Link>
             </li>
-            <li>
-              <Link id="a" to="/grocery">
+            <li className="px-4">
+              <Link className="a" to="/grocery">
                 Grocery
               </Link>
             </li>
-            <li>
-              <Link id="a" to="/cart">
+            <li className="px-4">
+              <Link className="a" to="/cart">
                 Cart
               </Link>
             </li>
-            <li>
+            <li className="px-4">
               <button
                 className="login-btn"
                 onClick={() => {
