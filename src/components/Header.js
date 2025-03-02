@@ -14,43 +14,45 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="flex bg-yellow-400 shadow-lg justify-between mb-2">
+      <div className="flex bg-black shadow-lg justify-between">
         <div className="logo-container p-2">
           <img className="w-25" src={LOGO_URL}></img>
         </div>
         <div className="flex items-center">
           <ul className="flex p-2 m-4">
             <li className="px-4">
-              <h2>Online Status:{isOnline ? " 🟢" : " 🔴"}</h2>
+              <h2 className="text-white">
+                Online Status:{isOnline ? " 🟢" : " 🔴"}
+              </h2>
             </li>
             <li className="px-4">
-              <Link className="a" to="/">
+              <Link className="a text-white" to="/">
                 Home
               </Link>
             </li>
             <li className="px-4">
-              <Link className="a" to="/about">
+              <Link className="a text-white" to="/about">
                 About Us
               </Link>
             </li>
             <li className="px-4">
-              <Link className="a" to="/contact">
+              <Link className="a text-white" to="/contact">
                 Contact
               </Link>
             </li>
             <li className="px-4">
-              <Link className="a" to="/grocery">
+              <Link className="a text-white" to="/grocery">
                 Grocery
               </Link>
             </li>
             <li className="px-4">
-              <Link className="a" to="/cart">
+              <Link className="a text-white" to="/cart">
                 Cart
               </Link>
             </li>
             <li className="px-4">
               <button
-                className="login-btn"
+                className="login-btn text-white"
                 onClick={() => {
                   btnName === "Login"
                     ? setBtnName("Logout")

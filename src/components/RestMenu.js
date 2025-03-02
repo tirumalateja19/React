@@ -1,6 +1,7 @@
 import Shimmer from "./shimmer";
 import { useParams } from "react-router";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
+import RestCategory from "./RestCategory";
 
 const Restaurent_menu = () => {
   const { resId } = useParams();
@@ -8,38 +9,35 @@ const Restaurent_menu = () => {
 
   if (menuCards === null) return <Shimmer />;
 
-  const { name, cuisines, avgRating, areaName } =
+  const { name, cuisines, avgRating, areaName, costForTwoMessage } =
     menuCards?.cards[2]?.card?.card?.info;
 
   const { itemCards } =
     menuCards?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card;
 
+  // console.log(menuCards?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+  const categories =
+    menuCards?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ==
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  // console.log(categories);
   return (
-    <div id="menu-container">
-      <div id="resta-name">
-        <h1>{name}</h1>
-        <br />
-        <div id="contents">
-          <h2>AvgRating : {avgRating}</h2>
-          <h3>Cuisines : {cuisines.join(", ")} </h3>
-          <h3>Area : {areaName}</h3>
-          <br />
-        </div>
-      </div>
-      <div id="menu-list">
-        <h2>Menu Details:</h2>
-        <br />
-        <ul>
-          {itemCards.map((item) => (
-            <li key={item?.card?.info?.id}>
-              {item?.card?.info?.name}-{" Rs. "}
-              {item?.card?.info?.price / 100 ||
-                item?.card?.info?.defaultPrice / 100}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="text-center">
+      <h1 className="my-6 font-bold text-xl">{name}</h1>
+      <h3 className="font-bold">
+        {cuisines.join(", ")} - {costForTwoMessage}{" "}
+      </h3>
+      {categories.map((category) => (
+        <RestCategory
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+        />
+      ))}
     </div>
   );
 };
