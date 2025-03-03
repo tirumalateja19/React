@@ -9,3 +9,6 @@ export const RESTUARENTS =
 
 export const MENU_API =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.4989841&lng=78.4176358&restaurantId=";
+
+export const vessel =
+  "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg";

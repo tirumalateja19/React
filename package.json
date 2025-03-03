@@ -2,31 +2,34 @@
   "name": "namastereact",
   "version": "1.0.0",
   "description": "Learning react",
-  "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "test": "jest"
+  "homepage": "https://github.com/tirumalateja19/React#readme",
+  "bugs": {
+    "url": "https://github.com/tirumalateja19/React/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tirumalateja19/React.git"
   },
-  "author": "Teja",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tirumalateja19/React/issues"
-  },
-  "homepage": "https://github.com/tirumalateja19/React#readme",
-  "devDependencies": {
-    "parcel": "^2.13.3",
-    "process": "^0.11.10"
+  "author": "Teja",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.1.3",
     "tailwindcss": "^4.0.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
   },
   "browserslist": [
     "last 2 versions"
