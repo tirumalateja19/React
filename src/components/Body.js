@@ -1,16 +1,20 @@
 import resList from "../utils/mockdata";
 import RestCards from "./RestCards";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { RESTUARENTS } from "../utils/constants";
 import { Link } from "react-router";
 import "/index.css";
+import UserContext from "./UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurantsData, setFilteredRestaurantsData] = useState([]);
 
   const [searchText, SetSearxhText] = useState("");
+
+  // similarly how we accessed loggedInUser from the UserContext using useContext hook in header, now we are accessing the setuserName from the UserContext only, but from app.js updated version that is UserContextProvider
+  const { setuserName, loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -67,6 +71,14 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="flex  m-4 p-4">
+          <label className="text-lg font-semibold mr-1.5">UserName :</label>
+          <input
+            className="border border-solid border-[#FB7117] shadow-xl p-0.5"
+            value={loggedInUser}
+            onChange={(e) => setuserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap ml-8">

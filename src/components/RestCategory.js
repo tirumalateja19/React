@@ -1,10 +1,9 @@
 import { useState } from "react";
 import ItemsList from "./ItemsList";
 
-const RestCategory = ({ data }) => {
-  const [showItems, setShowItems] = useState(false);
+const RestCategory = ({ data, showIndex, setshowIndex }) => {
   const handleClick = () => {
-    setShowItems(!showItems);
+    setshowIndex();
   };
   return (
     <div className="w-6/12 mx-auto my-4 bg-gray-100 shadow-lg p-4">
@@ -14,7 +13,7 @@ const RestCategory = ({ data }) => {
         </span>
         <span className="cursor-pointer">🔻</span>
       </div>
-      <div>{showItems && <ItemsList items={data?.itemCards} />}</div>
+      <div>{showIndex && <ItemsList items={data?.itemCards} />}</div>
     </div>
   );
 };
