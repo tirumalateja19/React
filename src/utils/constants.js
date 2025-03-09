@@ -12,3 +12,6 @@ export const MENU_API =
 
 export const vessel =
   "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg";
+
+export const EmptyCart =
+  "https://d16py1fyt83ijv.cloudfront.net/vedobi/assets/img/empty-cart.webp";

@@ -3,12 +3,16 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "./UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const isOnline = useOnlineStatus();
   // Here we are accessing the UserContext using the react hook useContext
   const { loggedInUser } = useContext(UserContext);
+  // subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="header">
@@ -51,17 +55,17 @@ const Header = () => {
             <li>
               <Link
                 className="text-white font-medium hover:underline"
-                to="/grocery"
+                to="/user"
               >
-                Grocery
+                UserClass
               </Link>
             </li>
             <li>
               <Link
                 className="text-white font-medium hover:underline"
-                to="/user"
+                to="/cart"
               >
-                UserClass
+                Cart-({cartItems.length})
               </Link>
             </li>
             <li>

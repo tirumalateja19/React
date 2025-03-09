@@ -10,6 +10,9 @@ import Restaurent_menu from "./components/RestMenu.js";
 import Error from "./components/Error.js";
 import UserClass from "./components/UserClass.js";
 import UserContext from "./components/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./Redux/appStore.js";
+import Cart from "./components/cart.js";
 
 const Grocery = lazy(() => import("./components/Grocery.js"));
 
@@ -24,16 +27,18 @@ const Container = () => {
     setuserName(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setuserName }}>
-      {/* to change the username from UI we are passing setuserName from context aloows access from other components */}
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setuserName }}>
+        {/* to change the username from UI we are passing setuserName from context aloows access from other components */}
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -46,6 +51,7 @@ const appRouter = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/user", element: <UserClass /> },
       { path: "/about", element: <About /> },
+      { path: "/cart", element: <Cart /> },
       { path: "/contact", element: <Contact /> },
       {
         path: "/grocery",

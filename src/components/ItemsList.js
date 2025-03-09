@@ -1,7 +1,14 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../Redux/cartSlice";
 import { CLOUD_URL, vessel } from "../utils/constants";
 
 const ItemsList = ({ items }) => {
-  console.log(items);
+  const dispatch = useDispatch();
+  // dispatch the action
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+  // here the item is added to a payload object and passed to cartSlice
   return (
     <div>
       {items.map((item) => (
@@ -26,7 +33,10 @@ const ItemsList = ({ items }) => {
           {/* Right Section: Image and Button */}
           <div className="w-3/12 p-4 flex flex-col items-center relative">
             <div className="absolute top-2">
-              <button className="w-16 h-7 bg-black text-white opacity-80 border text-center">
+              <button
+                className="w-16 h-7 bg-black text-white opacity-80 border text-center cursor-pointer"
+                onClick={() => handleAddItem(item)}
+              >
                 Add+
               </button>
             </div>
